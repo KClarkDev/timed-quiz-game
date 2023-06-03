@@ -212,3 +212,23 @@ showQuestion(quizQuestions, availableQuestions);
 // Function for behavior when answer is selected
 
 // Function for timer. Start with 60 seconds, lose 5 seconds each time a question is answered incorrectly
+
+function countdown() {
+    var timerEl = document.getElementById('timer');
+    var timeLeft = 60;
+  
+    // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeInterval = setInterval(function () {
+      timeLeft--;
+      timerEl.textContent = (timeLeft + " seconds.");
+  
+      if (timeLeft == 0) {
+        clearInterval(timeInterval);
+      displayMessage();
+      }
+    }, 1000);
+  }
+
+ while(titleScreen.getAttribute("data-visibility") == "hidden") {
+    countdown();
+ }

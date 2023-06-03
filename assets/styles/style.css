@@ -9,6 +9,28 @@
     font-family: 'Figtree', sans-serif;
 }
 
+i {
+    padding-right: 1%;
+}
+
+header {
+    display: flex;
+}
+
+.high-scores, .timer{
+    width: 50%;
+    flex-wrap: wrap;
+    padding: 1%;
+    font-weight: bold;
+    font-size:20px;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end
+}
+
 h1 {
     margin: 1%;
     font-size: 32px;
@@ -16,24 +38,33 @@ h1 {
 
 p {
     display: flex;
+    font-size: 20px;
 }
 
 .title-screen {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .title {
-    width: 70%;
+    width: 60%;
     justify-content: center;
 }
 
 .centered {
     padding: 20px;
-    border: 3px solid green; /*temporary for visualizing/testing*/
+    /* border: 3px solid var(--main-purple);*/
     text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.question-container {
+    border: 3px solid var(--main-purple);
+    margin: 5%;
 }
 
 .button {
@@ -43,7 +74,7 @@ p {
     font-weight: bold;
     padding: 1em;
     margin: 1%;
-    border-radius: 5%;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     min-width: 100px;
