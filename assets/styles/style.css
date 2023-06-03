@@ -14,10 +14,20 @@ h1 {
     font-size: 32px;
 }
 
+p {
+    display: flex;
+}
+
 .title-screen {
-    display: flexbox;
+    display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.title {
+    width: 70%;
+    justify-content: center;
 }
 
 .centered {
@@ -27,22 +37,34 @@ h1 {
 }
 
 .button {
-    /* display: block; */
+    display: flex;
     background-color: var(--main-purple);
     color: white;
     font-weight: bold;
     padding: 1em;
     margin: 1%;
-    /* width: 75%; */
     border-radius: 5%;
     font-size: 16px;
     cursor: pointer;
+    min-width: 100px;
 }
 
 .quiz-button {
     display: block;
 }
 
+.title-button {
+    width: 25%;
+}
+
 .button:hover {
     background-color: var(--secondary-purple);
+}
+
+div[data-visibility="visible"] {
+    visibility: visible;
+}
+
+div[data-visibility="hidden"] {
+    display: none; /*doesn't include white-space when an element is hidden*/
 }

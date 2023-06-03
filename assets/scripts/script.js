@@ -193,6 +193,20 @@ function showQuestion(questionList, possibleQuestions) {
    console.log("Remaining questions: " + possibleQuestions.length);
 }
 
+var titleScreen = document.querySelector(".title-screen");
+var quiz = document.querySelector(".question-container");
+
+titleScreen.querySelector("button").addEventListener("click", function(event) {
+  
+  var state = titleScreen.getAttribute("data-visibility");
+  if(state==="visible") {
+    titleScreen.setAttribute("data-visibility", "hidden");
+    quiz.setAttribute("data-visibility", "visible")
+  } else {
+    titleScreen.setAttribute("data-visibility", "visible");
+  }
+});
+
 showQuestion(quizQuestions, availableQuestions);
 
 // Function for behavior when answer is selected
