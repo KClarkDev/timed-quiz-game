@@ -174,7 +174,7 @@ for(var i=0; i < quizQuestions.length; i++) {
     availableQuestions.push(i);
 }
 
-// Function to show random question
+// Function to show random question and corresponding answer choices
 function showQuestion(questionList, possibleQuestions) {
     // Create a list of numbers that represent indexes of available (unasked) questions for the quiz
     // var possibleQuestions = [];
@@ -186,6 +186,10 @@ function showQuestion(questionList, possibleQuestions) {
     possibleQuestions.splice(questionIndex, 1);
     
    document.getElementById("question").innerHTML = questionList[questionIndex].question;
+   document.getElementById("answerA").innerHTML = questionList[questionIndex].answers.a;
+   document.getElementById("answerB").innerHTML = questionList[questionIndex].answers.b;
+   document.getElementById("answerC").innerHTML = questionList[questionIndex].answers.c;
+   document.getElementById("answerD").innerHTML = questionList[questionIndex].answers.d;
    console.log("Remaining questions: " + possibleQuestions.length);
 }
 

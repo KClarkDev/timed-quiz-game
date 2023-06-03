@@ -11,9 +11,23 @@
 
 h1 {
     margin: 1%;
+    font-size: 32px;
 }
+
+.title-screen {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered {
+    padding: 20px;
+    border: 3px solid green; /*temporary for visualizing/testing*/
+    text-align: center;
+}
+
 .button {
-    display: block;
+    /* display: block; */
     background-color: var(--main-purple);
     color: white;
     font-weight: bold;
@@ -21,6 +35,12 @@ h1 {
     margin: 1%;
     /* width: 75%; */
     border-radius: 5%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quiz-button {
+    display: block;
 }
 
 .button:hover {

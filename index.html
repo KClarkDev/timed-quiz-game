@@ -14,18 +14,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300&family=Montagu+Slab:wght@500&display=swap" rel="stylesheet">
     <title>JavaScript Quiz</title>
 </head>
+
 <body>
     <header>
         <div class="high-scores">View high scores</div>
         <div class="timer">Timer</div>
     </header>
     <main>
-        <h1 class="question" id="question">Question text goes here.</h1>
-        <div class="answer-container">
-            <button class="button" id="answerA">Placeholder A</button>
-            <button class="button" id="answerB">Placeholder B</button>
-            <button class="button" id="answerC">Placeholder C</button>
-            <button class="button" id="answerB">Placeholder D</button>
+        <div class='title-screen centered' data-visibility = "visible">
+            <h1 class="centered">Coding Quiz Challenge</h1>
+            <p class="centered">Try to answer as many of the following code-related questions as you can within the time limit (60 seconds). Keep in mind that incorrect answers will make you lose five seconds on the clock!</p>
+            <button class="button centered">Start Quiz</button>
+        </div>
+        
+        <div class = question-container data-visibility="hidden">
+            <h1 class="question" id="question">Question text goes here.</h1>
+            <div class="answer-container">
+                <button class="button quiz-button" id="answerA">Placeholder A</button>
+                <button class="button quiz-button" id="answerB">Placeholder B</button>
+                <button class="button quiz-button" id="answerC">Placeholder C</button>
+                <button class="button quiz-button" id="answerD">Placeholder D</button>
+            </div>
         </div>
     </main>
     <script src="./assets/scripts/script.js"></script>
