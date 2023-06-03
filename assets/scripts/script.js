@@ -1,4 +1,4 @@
-// Create object of various quiz questions
+// Create array with objects of various quiz questions and the correct answers
 var quizQuestions = [
     {
         questionNum: 1,
@@ -167,6 +167,30 @@ var quizQuestions = [
     }
 
 ]
+
+// Create a list of numbers that represent indexes of available (unasked) questions for the quiz
+var availableQuestions = [];
+for(var i=0; i < quizQuestions.length; i++) {
+    availableQuestions.push(i);
+}
+
+// Function to show random question
+function showQuestion(questionList, possibleQuestions) {
+    // Create a list of numbers that represent indexes of available (unasked) questions for the quiz
+    // var possibleQuestions = [];
+    // for(var i=0; i < quizQuestions.length; i++) {
+    //     possibleQuestions.push(i);
+    // }
+
+    var questionIndex = Math.floor(Math.random() * possibleQuestions.length);
+    possibleQuestions.splice(questionIndex, 1);
+    
+   document.getElementById("question").innerHTML = questionList[questionIndex].question;
+   console.log("Remaining questions: " + possibleQuestions.length);
+}
+
+showQuestion(quizQuestions, availableQuestions);
+
 // Function for behavior when answer is selected
 
 // Function for timer. Start with 60 seconds, lose 5 seconds each time a question is answered incorrectly
