@@ -195,13 +195,17 @@ function showQuestion(questionList, possibleQuestions) {
 
 var titleScreen = document.querySelector(".title-screen");
 var quiz = document.querySelector(".question-container");
+var timer = document.querySelector(".timer")
 
 titleScreen.querySelector("button").addEventListener("click", function(event) {
   
   var state = titleScreen.getAttribute("data-visibility");
+
   if(state==="visible") {
     titleScreen.setAttribute("data-visibility", "hidden");
-    quiz.setAttribute("data-visibility", "visible")
+    quiz.setAttribute("data-visibility", "visible");
+    timer.setAttribute("data-visibility", "visible");
+    countdown(quizQuestions);
   } else {
     titleScreen.setAttribute("data-visibility", "visible");
   }
@@ -213,14 +217,14 @@ showQuestion(quizQuestions, availableQuestions);
 
 // Function for timer. Start with 60 seconds, lose 5 seconds each time a question is answered incorrectly
 
-function countdown() {
-    var timerEl = document.getElementById('timer');
-    var timeLeft = 60;
+function countdown(quizQuestions) {
+    var timerEl = document.getElementById('count-down');
+    var timeLeft = quizQuestions.length * 5; // Allows for 5 seconds per question
   
     // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
       timeLeft--;
-      timerEl.textContent = (timeLeft + " seconds.");
+      timerEl.textContent = (" " + timeLeft + " seconds");
   
       if (timeLeft == 0) {
         clearInterval(timeInterval);
@@ -228,7 +232,3 @@ function countdown() {
       }
     }, 1000);
   }
-
- while(titleScreen.getAttribute("data-visibility") == "hidden") {
-    countdown();
- }
