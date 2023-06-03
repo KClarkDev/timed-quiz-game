@@ -1,3 +1,28 @@
-.answer-container {
+/*set theme colors as variables*/
+:root {
+    --main-purple: #735D78;
+    --secondary-purple: #B392AC;
+}
+
+/*set default theme font*/
+* {
+    font-family: 'Figtree', sans-serif;
+}
+
+h1 {
+    margin: 1%;
+}
+.button {
     display: block;
+    background-color: var(--main-purple);
+    color: white;
+    font-weight: bold;
+    padding: 1em;
+    margin: 1%;
+    /* width: 75%; */
+    border-radius: 5%;
+}
+
+.button:hover {
+    background-color: var(--secondary-purple);
 }
