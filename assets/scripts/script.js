@@ -9,10 +9,10 @@ var quizQuestions = [
     question:
       "Inside the HTML document, where do you place your JavaScript code?",
     answers: {
-      a: "Inside the <footer> element",
-      b: "Inside the <link> element",
-      c: "In the <head> element",
-      d: "Inside the <script> element",
+      a: "Inside the &lt;footer&gt element",
+      b: "Inside the &lt;link&gt element",
+      c: "In the &lt;head&gt element",
+      d: "Inside the &lt;script&gt element",
     },
     correctAnswer: "d",
   },
@@ -212,10 +212,9 @@ function initializeQuiz() {
   }
 }
 
-// Display a random question from the shuffled array. when an answer (button) is clicked, proceed to the next question in the array.
+// Display a question from the shuffled array, starting with the first index. When an answer (button) is clicked, proceed to the next question in the array.
 function showQuestion(questionList, currentIndex) {
   var currentQuestion = questionList[currentIndex];
-  console.log("The current question number is: " + currentQuestion.questionNum);
 
   // Populate the appropriate HTML elements with the current question and answer text
   document.getElementById("question").innerHTML = currentQuestion.question;
@@ -223,6 +222,23 @@ function showQuestion(questionList, currentIndex) {
   document.getElementById("b").innerHTML = currentQuestion.answers.b;
   document.getElementById("c").innerHTML = currentQuestion.answers.c;
   document.getElementById("d").innerHTML = currentQuestion.answers.d;
+}
+
+function checkQuestion(event) {
+  var currentQuestion = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
+  //   console.log("Info for the current question:");
+  //   console.log("Question Number: " + currentQuestion.questionNum);
+  //   console.log("Question: " + currentQuestion.question);
+  //   console.log("Answers:", currentQuestion.answers);
+  //   console.log("Correct Answer: " + currentQuestion.correctAnswer);
+  var correctAnswer = currentQuestion.correctAnswer;
+  var selectedAnswer = event.target.id;
+
+  if (selectedAnswer === correctAnswer) {
+    console.log("Yay correct answer!");
+  } else {
+    console.log("You got it wrong!");
+  }
 }
 
 // Sets the behavior for the timer. Allots 5 seconds per question. Lose 5 seconds each time a question is answered incorrectly
@@ -254,8 +270,6 @@ buttons.forEach(function (button) {
   button.addEventListener("click", function () {
     if (currentIndex < quizQuestions.length - 1) {
       currentIndex++;
-      console.log("Length of quizQuestions: " + quizQuestions.length);
-      console.log("The current index is: " + currentIndex);
       showQuestion(quizQuestions, currentIndex);
     } else {
       quiz.setAttribute("data-visibility", "hidden");
@@ -263,4 +277,8 @@ buttons.forEach(function (button) {
       console.log("Quiz is over!");
     }
   });
+});
+
+buttons.forEach(function (button) {
+  button.addEventListener("click", checkQuestion);
 });
