@@ -9,10 +9,10 @@ var quizQuestions = [
     question:
       "Inside the HTML document, where do you place your JavaScript code?",
     answers: {
-      a: "Inside the &lt;footer&gt element",
-      b: "Inside the &lt;link&gt element",
-      c: "In the &lt;head&gt element",
-      d: "Inside the &lt;script&gt element",
+      a: "a.  Inside the &lt;footer&gt element",
+      b: "b.  Inside the &lt;link&gt element",
+      c: "c.  In the &lt;head&gt element",
+      d: "d.  Inside the &lt;script&gt element",
     },
     correctAnswer: "d",
   },
@@ -20,10 +20,10 @@ var quizQuestions = [
     questionNum: 2,
     question: "What operator is used to assign a value to a declared variable?",
     answers: {
-      a: "Double-equal (==)",
-      b: "Colon (:)",
-      c: "Equal sign (=)",
-      d: "Question mark (?)",
+      a: "a.  Double-equal (==)",
+      b: "b.  Colon (:)",
+      c: "c.  Equal sign (=)",
+      d: "d.  Question mark (?)",
     },
     correctAnswer: "c",
   },
@@ -31,10 +31,10 @@ var quizQuestions = [
     questionNum: 3,
     question: "What are the six primitive data types in JavaScript?",
     answers: {
-      a: "string, num, falsy, bigInt, symbol, undefined",
-      b: "sentence, int, truthy, bigInt, symbol, undefined",
-      c: "sentence, float, data, bigInt, symbol, undefined",
-      d: "string, number, boolean, bigInt, symbol, undefined",
+      a: "a.  string, num, falsy, bigInt, symbol, undefined",
+      b: "b.  sentence, int, truthy, bigInt, symbol, undefined",
+      c: "c.  sentence, float, data, bigInt, symbol, undefined",
+      d: "d.  string, number, boolean, bigInt, symbol, undefined",
     },
     correctAnswer: "d",
   },
@@ -42,10 +42,10 @@ var quizQuestions = [
     questionNum: 4,
     question: "What is the difference between && and ||?",
     answers: {
-      a: "The logical operator && returns true is one expression is true while the logical operator || returns true if both expressions return true.",
-      b: "The logical operator && returns true is both expressions are true while the logical operator || returns true if one expression or the other returns true.",
-      c: "The logical operator && returns true if both expressions are true while the logical operator || returns false if one expression or the other returns true.",
-      d: "The logical operator && returns true if none of the expressions are true while the logical operator || returns true if one expression or the other returns true.",
+      a: "a.  The logical operator && returns true is one expression is true while the logical operator || returns true if both expressions return true.",
+      b: "b.  The logical operator && returns true is both expressions are true while the logical operator || returns true if one expression or the other returns true.",
+      c: "c.  The logical operator && returns true if both expressions are true while the logical operator || returns false if one expression or the other returns true.",
+      d: "d.  The logical operator && returns true if none of the expressions are true while the logical operator || returns true if one expression or the other returns true.",
     },
     correctAnswer: "b",
   },
@@ -53,10 +53,10 @@ var quizQuestions = [
     questionNum: 5,
     question: "How do we declare a conditional statement in Javsacript?",
     answers: {
-      a: "if...else",
-      b: "difference...between",
-      c: "while loop",
-      d: "for loop",
+      a: "a.  if...else",
+      b: "b.  difference...between",
+      c: "c.  while loop",
+      d: "d.  for loop",
     },
     correctAnswer: "a",
   },
@@ -65,10 +65,10 @@ var quizQuestions = [
     question:
       "From the given array which index is the letter 'b' on? ['a', 'b', 'c', 'd']",
     answers: {
-      a: "0",
-      b: "1",
-      c: "2",
-      d: "3",
+      a: "a.  0",
+      b: "b.  1",
+      c: "c.  2",
+      d: "d.  3",
     },
     correctAnswer: "b",
   },
@@ -76,10 +76,10 @@ var quizQuestions = [
     questionNum: 7,
     question: "How do we stop a loop from repeating indefinitely?",
     answers: {
-      a: "When we have iterated through half of the condition.",
-      b: "A loop will stop executing when the condition is false.",
-      c: "We have to explicitly end the loop with the break keyword.",
-      d: "A loop will stop executing when the condition is true.",
+      a: "a.  When we have iterated through half of the condition.",
+      b: "b.  A loop will stop executing when the condition is false.",
+      c: "c.  We have to explicitly end the loop with the break keyword.",
+      d: "d.  A loop will stop executing when the condition is true.",
     },
     correctAnswer: "b",
   },
@@ -88,10 +88,10 @@ var quizQuestions = [
     question:
       "Which statement below is NOT true about functions in Javascript?",
     answers: {
-      a: "A function must always be assigned an identifier.",
-      b: "Function are able to be recursive.",
-      c: "Functions can be reused throughout your code.",
-      d: "Functions can receive arguments that can alter the output of a function.",
+      a: "a.  A function must always be assigned an identifier.",
+      b: "b.  Function are able to be recursive.",
+      c: "c.  Functions can be reused throughout your code.",
+      d: "d.  Functions can receive arguments that can alter the output of a function.",
     },
     correctAnswer: "a",
   },
@@ -99,10 +99,10 @@ var quizQuestions = [
     questionNum: 9,
     question: "What are the two types of scope Javascript uses?",
     answers: {
-      a: "Abroad and Local",
-      b: "Outside and Inside",
-      c: "Global and Local",
-      d: "Surrounding and Inner",
+      a: "a.  Abroad and Local",
+      b: "b.  Outside and Inside",
+      c: "c.  Global and Local",
+      d: "d.  Surrounding and Inner",
     },
     correctAnswer: "c",
   },
@@ -111,10 +111,10 @@ var quizQuestions = [
     question:
       "As a developer, I want to be able to remove the last element of my array and I want to also be able to add a new element to the beginning of my array. Which two array methods should I use?",
     answers: {
-      a: "forEach() and pop()",
-      b: "push() and sort()",
-      c: "pop() and unshift()",
-      d: "concat() and shift()",
+      a: "a.  forEach() and pop()",
+      b: "b.  push() and sort()",
+      c: "c.  pop() and unshift()",
+      d: "d.  concat() and shift()",
     },
     correctAnswer: "c",
   },
@@ -122,10 +122,10 @@ var quizQuestions = [
     questionNum: 11,
     question: "How do we access a value stored in an object?",
     answers: {
-      a: "Dot notation, Curl bracket notation",
-      b: "Period notation, Square bracket notation",
-      c: "Equal notation, Abstract notation",
-      d: "Dot notation, Bracket notation",
+      a: "a.  Dot notation, Curl bracket notation",
+      b: "b.  Period notation, Square bracket notation",
+      c: "c.  Equal notation, Abstract notation",
+      d: "d.  Dot notation, Bracket notation",
     },
     correctAnswer: "d",
   },
@@ -133,10 +133,10 @@ var quizQuestions = [
     questionNum: 12,
     question: "What is an object method?",
     answers: {
-      a: "A function that takes an object for an argument.",
-      b: "An array saved inside an object",
-      c: "A function associated with an object",
-      d: "Keys in an object that have a number assigned to it",
+      a: "a.  A function that takes an object for an argument.",
+      b: "b.  An array saved inside an object",
+      c: "c.  A function associated with an object",
+      d: "d.  Keys in an object that have a number assigned to it",
     },
     correctAnswer: "c",
   },
@@ -144,10 +144,10 @@ var quizQuestions = [
     questionNum: 13,
     question: "What is the purpose of the 'This' operator?",
     answers: {
-      a: "'This' keyword lets us make a reference to our window gives us access to special object methods.",
-      b: "The keyword 'This' refers to the object it is in. 'This' changes based on which object it is in when being called.",
-      c: "This' keyword allows us to specify certain variables to it which can be used in the global scope.",
-      d: "This' is an array where we can easily store global variables for when we need access to them.",
+      a: "a.  'This' keyword lets us make a reference to our window gives us access to special object methods.",
+      b: "b.  The keyword 'This' refers to the object it is in. 'This' changes based on which object it is in when being called.",
+      c: "c.  This' keyword allows us to specify certain variables to it which can be used in the global scope.",
+      d: "d.  This' is an array where we can easily store global variables for when we need access to them.",
     },
     correctAnswer: "b",
   },
@@ -156,10 +156,10 @@ var quizQuestions = [
     question:
       "We create a new branch off of our main branch with  'git branch test-branch'. How do we switch to our newly created branch?",
     answers: {
-      a: "git checkout test-branch",
-      b: "git merge test-branch",
-      c: "git change test-branch",
-      d: "git commit test-branch",
+      a: "a.  git checkout test-branch",
+      b: "b.  git merge test-branch",
+      c: "c.  git change test-branch",
+      d: "d.  git commit test-branch",
     },
     correctAnswer: "a",
   },
@@ -168,10 +168,10 @@ var quizQuestions = [
     question:
       "From the reasons listed below, which is NOT true about JavaScript?",
     answers: {
-      a: "JavaScript increases interactivity of our websites.",
-      b: "JavaScripts handles numbers better than most programming languages.",
-      c: "Javascript allows developers to create richer interfaces for the users.",
-      d: "JavaScript lets provide the user immediate feedback upon an action.",
+      a: "a.  JavaScript increases interactivity of our websites.",
+      b: "b.  JavaScripts handles numbers better than most programming languages.",
+      c: "c.  Javascript allows developers to create richer interfaces for the users.",
+      d: "d.  JavaScript lets provide the user immediate feedback upon an action.",
     },
     correctAnswer: "b",
   },
@@ -182,6 +182,8 @@ var quiz = document.querySelector(".question-container");
 var timer = document.querySelector(".timer");
 var buttons = document.querySelectorAll(".quiz-button");
 var messageBox = document.querySelector(".message-container");
+var answerMessage = document.getElementById("answer-message");
+var scoreBox = document.getElementById("score");
 
 var currentIndex = 0; // Start with the first question of the shuffled array
 var score = 0;
@@ -232,18 +234,20 @@ function checkQuestion(event) {
 
   var correctAnswer = currentQuestion.correctAnswer;
   var selectedAnswer = event.target.id;
+  var timerEl = document.getElementById("count-down");
 
   messageBox.setAttribute("data-visibility", "visible"); // Makes the messagebox display after answering the first question of the quiz
 
   if (selectedAnswer === correctAnswer) {
     score++;
     messageBox.setAttribute("data-answer-status", "correct");
-    document.getElementById("answer-message").innerHTML = "Correct!";
-    document.getElementById("score").innerHTML = "Score: " + score;
+    answerMessage.innerHTML = "Correct!";
+    scoreBox.innerHTML = "Score: " + score;
   } else {
     messageBox.setAttribute("data-answer-status", "incorrect");
-    document.getElementById("answer-message").innerHTML = "Wrong!";
-    document.getElementById("score").innerHTML = "Score: " + score;
+    answerMessage.innerHTML = "Wrong!";
+    timerEl.textContent = parseInt(timerEl.textContent) - 5;
+    scoreBox.innerHTML = "Score: " + score;
   }
 }
 
@@ -271,7 +275,6 @@ function countdown() {
 
 titleScreen.querySelector("button").addEventListener("click", initializeQuiz);
 
-// Add event listeners to the buttons outside the showQuestion function
 buttons.forEach(function (button) {
   button.addEventListener("click", function () {
     if (currentIndex < quizQuestions.length - 1) {
@@ -280,6 +283,7 @@ buttons.forEach(function (button) {
     } else {
       quiz.setAttribute("data-visibility", "hidden");
       timer.setAttribute("data-visibility", "hidden");
+      answerMessage.setAttribute("data-visibility", "hidden");
       console.log("Quiz is over!");
     }
   });

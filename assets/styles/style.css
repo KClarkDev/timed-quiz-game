@@ -69,10 +69,21 @@ p {
 .question-container {
     border: 3px solid var(--main-purple);
     margin: 5% 5% 1% 5%;
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.answer-container {
+    padding: 2%;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .button {
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     background-color: var(--main-purple);
     color: white;
     font-weight: bold;
@@ -81,11 +92,8 @@ p {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    min-width: 100px;
-}
-
-.quiz-button {
-    display: block;
+    width: 100%;
+    white-space: pre;
 }
 
 .title-button {
