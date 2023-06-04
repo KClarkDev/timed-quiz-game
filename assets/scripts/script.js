@@ -174,6 +174,7 @@ var quizQuestions = [
 
 // Create a list of numbers that represent indexes of available (unasked) questions for the quiz
 var availableQuestions = [];
+
 for(var i=0; i < quizQuestions.length; i++) {
     availableQuestions.push(i);
 }
@@ -188,25 +189,52 @@ var buttons = document.querySelectorAll(".quiz-button");
 //////////////////////////////
 
 // Display a random question from the list and its corresponding answer choices
-function showQuestion(questionList, availableQuestions) {
+function showQuestion(questionList, availableQuestions, questionIndex) {
 
     var questionIndex = Math.floor(Math.random() * availableQuestions.length);
+
     availableQuestions.splice(questionIndex, 1); // Remove the selected index from the array of possible choices so we don't repeat questions
     
     // Populate the appropriate HTML elements with the question and answer text  
     document.getElementById("question").innerHTML = questionList[questionIndex].question;
-    document.getElementById("answerA").innerHTML = questionList[questionIndex].answers.a;
-    document.getElementById("answerB").innerHTML = questionList[questionIndex].answers.b;
-    document.getElementById("answerC").innerHTML = questionList[questionIndex].answers.c;
-    document.getElementById("answerD").innerHTML = questionList[questionIndex].answers.d;
-    console.log("Remaining questions: " + availableQuestions.length);
-    console.log(availableQuestions);
+    document.getElementById("a").innerHTML = questionList[questionIndex].answers.a;
+    document.getElementById("b").innerHTML = questionList[questionIndex].answers.b;
+    document.getElementById("c").innerHTML = questionList[questionIndex].answers.c;
+    document.getElementById("d").innerHTML = questionList[questionIndex].answers.d;
+
     return availableQuestions;
 }
 
-function nextQuestion() {
+function nextQuestion(event) {
+    var selectedAnswer = event.target.id;
+    console.log(selectedAnswer);
     showQuestion(quizQuestions, availableQuestions);
 }
+
+function nextQuestion(event) {
+    var selectedAnswer = event.target.id;
+    var currentQuestionIndex = availableQuestions[0]; 
+    
+    // Access the correct answer for the current question
+    var correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
+  
+    if (selectedAnswer === correctAnswer) {
+      console.log("Correct answer!"); // The selected answer matches the correct answer
+    } else {
+      console.log("Incorrect answer!"); // The selected answer does not match the correct answer
+    }
+  
+    availableQuestions.shift(); // Remove the current question from the availableQuestions array
+  
+    if (availableQuestions.length > 0) {
+      // If there are more questions available, show the next question
+      showQuestion(quizQuestions, availableQuestions);
+    } else {
+      // If all questions have been asked, end the quiz or perform other actions
+      console.log("Quiz completed!");
+    }
+  }
+  
   
 
 function initializeQuiz() {
@@ -217,8 +245,8 @@ function initializeQuiz() {
     titleScreen.setAttribute("data-visibility", "hidden");
     quiz.setAttribute("data-visibility", "visible");
     timer.setAttribute("data-visibility", "visible");
-    countdown(quizQuestions);
     showQuestion(quizQuestions, availableQuestions)
+    countdown(quizQuestions);
   } else {
     titleScreen.setAttribute("data-visibility", "visible");
   }
@@ -229,6 +257,7 @@ function initializeQuiz() {
 function countdown(quizQuestions) {
     var timerEl = document.getElementById('count-down');
     var timeLeft = quizQuestions.length * 5; // Allows for 5 seconds per question
+    timerEl.textContent = (" " + timeLeft + " seconds"); // Ensures that timer displays as soon as the quiz starts
   
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
