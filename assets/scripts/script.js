@@ -172,29 +172,38 @@ var quizQuestions = [
 
 ]
 
-// Create a list of numbers that represent indexes of available (unasked) questions for the quiz
-var availableQuestions = [];
+// // Create a list of numbers that represent indexes of available (unasked) questions for the quiz
+// var availableQuestions = [];
 
-for(var i=0; i < quizQuestions.length; i++) {
-    availableQuestions.push(i);
-}
+// for(var i=0; i < quizQuestions.length; i++) {
+//     availableQuestions.push(i);
+// }
 
 var titleScreen = document.querySelector(".title-screen");
 var quiz = document.querySelector(".question-container");
 var timer = document.querySelector(".timer");
 var buttons = document.querySelectorAll(".quiz-button");
 
+shuffleArray(quizQuestions);
+
 //////////////////////////////
 //////////FUNCTIONS///////////
 //////////////////////////////
+
+// from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+// Durstenfeld shuffle (aka Fisher-Yates modern shuffle algorithm)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
 // Display a random question from the list and its corresponding answer choices
 function showQuestion(questionList, availableQuestions, questionIndex) {
 
     var questionIndex = Math.floor(Math.random() * availableQuestions.length);
 
-    availableQuestions.splice(questionIndex, 1); // Remove the selected index from the array of possible choices so we don't repeat questions
-    
     // Populate the appropriate HTML elements with the question and answer text  
     document.getElementById("question").innerHTML = questionList[questionIndex].question;
     document.getElementById("a").innerHTML = questionList[questionIndex].answers.a;
@@ -202,18 +211,17 @@ function showQuestion(questionList, availableQuestions, questionIndex) {
     document.getElementById("c").innerHTML = questionList[questionIndex].answers.c;
     document.getElementById("d").innerHTML = questionList[questionIndex].answers.d;
 
+    availableQuestions.splice(questionIndex, 1); // Remove the selected index from the array of possible choices so we don't repeat questions
+
     return availableQuestions;
 }
 
 function nextQuestion(event) {
     var selectedAnswer = event.target.id;
-    console.log(selectedAnswer);
-    showQuestion(quizQuestions, availableQuestions);
-}
-
-function nextQuestion(event) {
-    var selectedAnswer = event.target.id;
-    var currentQuestionIndex = availableQuestions[0]; 
+    console.log("Selected answer: " + selectedAnswer)
+    var currentQuestionIndex = quizQuestions.indexOf(document.querySelector(".question"))
+    console.log("Current question index: " +currentQuestionIndex) 
+    console.log("Correct answer: " + quizQuestions[currentQuestionIndex].correctAnswer);
     
     // Access the correct answer for the current question
     var correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
@@ -224,6 +232,8 @@ function nextQuestion(event) {
       console.log("Incorrect answer!"); // The selected answer does not match the correct answer
     }
   
+    console.log('-----------------');
+
     availableQuestions.shift(); // Remove the current question from the availableQuestions array
   
     if (availableQuestions.length > 0) {
@@ -233,9 +243,8 @@ function nextQuestion(event) {
       // If all questions have been asked, end the quiz or perform other actions
       console.log("Quiz completed!");
     }
-  }
-  
-  
+}
+
 
 function initializeQuiz() {
   
