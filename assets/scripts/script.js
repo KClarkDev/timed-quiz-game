@@ -181,8 +181,10 @@ var titleScreen = document.querySelector(".title-screen");
 var quiz = document.querySelector(".question-container");
 var timer = document.querySelector(".timer");
 var buttons = document.querySelectorAll(".quiz-button");
+var messageBox = document.querySelector(".message-container");
 
 var currentIndex = 0; // Start with the first question of the shuffled array
+var score = 0;
 
 //////////////////////////////
 //////////FUNCTIONS///////////
@@ -205,6 +207,7 @@ function initializeQuiz() {
     titleScreen.setAttribute("data-visibility", "hidden");
     quiz.setAttribute("data-visibility", "visible");
     timer.setAttribute("data-visibility", "visible");
+
     countdown(quizQuestions);
     showQuestion(quizQuestions, currentIndex);
   } else {
@@ -226,18 +229,21 @@ function showQuestion(questionList, currentIndex) {
 
 function checkQuestion(event) {
   var currentQuestion = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
-  //   console.log("Info for the current question:");
-  //   console.log("Question Number: " + currentQuestion.questionNum);
-  //   console.log("Question: " + currentQuestion.question);
-  //   console.log("Answers:", currentQuestion.answers);
-  //   console.log("Correct Answer: " + currentQuestion.correctAnswer);
+
   var correctAnswer = currentQuestion.correctAnswer;
   var selectedAnswer = event.target.id;
 
+  messageBox.setAttribute("data-visibility", "visible"); // Makes the messagebox display after answering the first question of the quiz
+
   if (selectedAnswer === correctAnswer) {
-    console.log("Yay correct answer!");
+    score++;
+    messageBox.setAttribute("data-answer-status", "correct");
+    document.getElementById("answer-message").innerHTML = "Correct!";
+    document.getElementById("score").innerHTML = "Score: " + score;
   } else {
-    console.log("You got it wrong!");
+    messageBox.setAttribute("data-answer-status", "incorrect");
+    document.getElementById("answer-message").innerHTML = "Wrong!";
+    document.getElementById("score").innerHTML = "Score: " + score;
   }
 }
 

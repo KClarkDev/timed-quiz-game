@@ -18,16 +18,16 @@ header {
 }
 
 .high-scores, .timer{
+    display: flex;
     width: 50%;
     flex-wrap: wrap;
     padding: 1%;
     font-weight: bold;
     font-size:20px;
+    align-items: center;
 }
 
 .timer {
-    display: flex;
-    align-items: center;
     justify-content: flex-end
 }
 
@@ -68,7 +68,7 @@ p {
 
 .question-container {
     border: 3px solid var(--main-purple);
-    margin: 5%;
+    margin: 5% 5% 1% 5%;
 }
 
 .button {
@@ -96,6 +96,11 @@ p {
     background-color: var(--secondary-purple);
 }
 
+.message-container p {
+    justify-content: center;
+    font-weight: bold;
+}
+
 div[data-visibility="visible"] {
     visibility: visible;
 }
@@ -103,3 +108,12 @@ div[data-visibility="visible"] {
 div[data-visibility="hidden"] {
     display: none; /*doesn't include white-space when an element is hidden*/
 }
+
+div[data-answer-status="correct"] p:first-child {
+    color: green;
+}
+
+div[data-answer-status="incorrect"] p:first-child {
+    color: red;
+}
+
