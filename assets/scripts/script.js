@@ -1,3 +1,7 @@
+/////////////////////////////////////////
+//////////INITIALIZE VARIABLES///////////
+/////////////////////////////////////////
+
 // Create array with objects of various quiz questions and the correct answers
 var quizQuestions = [
     {
@@ -174,30 +178,38 @@ for(var i=0; i < quizQuestions.length; i++) {
     availableQuestions.push(i);
 }
 
-// Function to show random question and corresponding answer choices
-function showQuestion(questionList, possibleQuestions) {
-    // Create a list of numbers that represent indexes of available (unasked) questions for the quiz
-    // var possibleQuestions = [];
-    // for(var i=0; i < quizQuestions.length; i++) {
-    //     possibleQuestions.push(i);
-    // }
-
-    var questionIndex = Math.floor(Math.random() * possibleQuestions.length);
-    possibleQuestions.splice(questionIndex, 1);
-    
-   document.getElementById("question").innerHTML = questionList[questionIndex].question;
-   document.getElementById("answerA").innerHTML = questionList[questionIndex].answers.a;
-   document.getElementById("answerB").innerHTML = questionList[questionIndex].answers.b;
-   document.getElementById("answerC").innerHTML = questionList[questionIndex].answers.c;
-   document.getElementById("answerD").innerHTML = questionList[questionIndex].answers.d;
-   console.log("Remaining questions: " + possibleQuestions.length);
-}
-
 var titleScreen = document.querySelector(".title-screen");
 var quiz = document.querySelector(".question-container");
-var timer = document.querySelector(".timer")
+var timer = document.querySelector(".timer");
+var buttons = document.querySelectorAll(".quiz-button");
 
-titleScreen.querySelector("button").addEventListener("click", function(event) {
+//////////////////////////////
+//////////FUNCTIONS///////////
+//////////////////////////////
+
+// Display a random question from the list and its corresponding answer choices
+function showQuestion(questionList, availableQuestions) {
+
+    var questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    availableQuestions.splice(questionIndex, 1); // Remove the selected index from the array of possible choices so we don't repeat questions
+    
+    // Populate the appropriate HTML elements with the question and answer text  
+    document.getElementById("question").innerHTML = questionList[questionIndex].question;
+    document.getElementById("answerA").innerHTML = questionList[questionIndex].answers.a;
+    document.getElementById("answerB").innerHTML = questionList[questionIndex].answers.b;
+    document.getElementById("answerC").innerHTML = questionList[questionIndex].answers.c;
+    document.getElementById("answerD").innerHTML = questionList[questionIndex].answers.d;
+    console.log("Remaining questions: " + availableQuestions.length);
+    console.log(availableQuestions);
+    return availableQuestions;
+}
+
+function nextQuestion() {
+    showQuestion(quizQuestions, availableQuestions);
+}
+  
+
+function initializeQuiz() {
   
   var state = titleScreen.getAttribute("data-visibility");
 
@@ -206,29 +218,37 @@ titleScreen.querySelector("button").addEventListener("click", function(event) {
     quiz.setAttribute("data-visibility", "visible");
     timer.setAttribute("data-visibility", "visible");
     countdown(quizQuestions);
+    showQuestion(quizQuestions, availableQuestions)
   } else {
     titleScreen.setAttribute("data-visibility", "visible");
   }
-});
+}
 
-showQuestion(quizQuestions, availableQuestions);
-
-// Function for behavior when answer is selected
-
-// Function for timer. Start with 60 seconds, lose 5 seconds each time a question is answered incorrectly
+// Sets the behavior for the timer. Allots 5 seconds per question. Lose 5 seconds each time a question is answered incorrectly
 
 function countdown(quizQuestions) {
     var timerEl = document.getElementById('count-down');
     var timeLeft = quizQuestions.length * 5; // Allows for 5 seconds per question
   
-    // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
       timeLeft--;
       timerEl.textContent = (" " + timeLeft + " seconds");
   
       if (timeLeft == 0) {
         clearInterval(timeInterval);
-      displayMessage();
       }
     }, 1000);
   }
+
+////////////////////////////////////
+//////////EVENT LISTENERS///////////
+////////////////////////////////////
+
+titleScreen.querySelector("button").addEventListener("click", initializeQuiz);
+
+buttons.forEach(function (button) {
+    button.addEventListener("click", nextQuestion);
+})
+
+
