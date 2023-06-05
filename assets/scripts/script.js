@@ -184,10 +184,20 @@ var buttons = document.querySelectorAll(".quiz-button");
 var messageBox = document.querySelector(".message-container");
 var answerMessage = document.getElementById("answer-message");
 var scoreBox = document.getElementById("score");
+var initials = document.getElementById("initials");
+var saveBtn = document.getElementById("save-btn");
+var highScoreTable = document.getElementById("highscore-table");
 
+var timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
+var timeInterval;
 var currentIndex = 0; // Start with the first question of the shuffled array
-var score = 0;
+// var score = 0;
 
+var highScores = []; // Will be an array of objects with initials/high score pairs
+
+if (localStorage.getItem("highScores")) {
+  highScores = JSON.parse(localStorage.getItem("highScores")); //converts back to an array
+}
 //////////////////////////////
 //////////FUNCTIONS///////////
 //////////////////////////////
@@ -234,39 +244,63 @@ function checkQuestion(event) {
 
   var correctAnswer = currentQuestion.correctAnswer;
   var selectedAnswer = event.target.id;
-  var timerEl = document.getElementById("count-down");
 
   messageBox.setAttribute("data-visibility", "visible"); // Makes the messagebox display after answering the first question of the quiz
 
   if (selectedAnswer === correctAnswer) {
-    score++;
+    // score++;
     messageBox.setAttribute("data-answer-status", "correct");
     answerMessage.innerHTML = "Correct!";
-    scoreBox.innerHTML = "Score: " + score;
+    // scoreBox.innerHTML = "Score: " + score;
   } else {
     messageBox.setAttribute("data-answer-status", "incorrect");
     answerMessage.innerHTML = "Wrong!";
-    timerEl.textContent = parseInt(timerEl.textContent) - 5;
-    scoreBox.innerHTML = "Score: " + score;
+    timeLeft = timeLeft - 15;
+    // scoreBox.innerHTML = "Score: " + score;
   }
+}
+
+function endGame() {
+  quiz.setAttribute("data-visibility", "hidden");
+  //   timer.setAttribute("data-visibility", "hidden");
+  answerMessage.setAttribute("data-visibility", "hidden");
+  document
+    .getElementById("initials-container")
+    .setAttribute("data-visibility", "visible");
+  clearInterval(timeInterval);
+  scoreBox.textContent = timeLeft;
 }
 
 // Sets the behavior for the timer. Allots 5 seconds per question. Lose 5 seconds each time a question is answered incorrectly
 
 function countdown() {
   var timerEl = document.getElementById("count-down");
-  var timeLeft = quizQuestions.length * 5; // Allows for 5 seconds per question
+
+  //   var timeLeft = 10;
   timerEl.textContent = " " + timeLeft + " seconds"; // Ensures that timer displays as soon as the quiz starts
 
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function () {
+  timeInterval = setInterval(function () {
     timeLeft--;
     timerEl.textContent = " " + timeLeft + " seconds";
 
     if (timeLeft == 0) {
-      clearInterval(timeInterval);
+      endGame();
     }
   }, 1000);
+}
+
+function showScores() {
+  highScoreTable.setAttribute("data-visibility", "visible");
+  highScoreTable.textContent = "";
+  highScores = highScores.sort(function (a, b) {
+    return b.timeLeft - a.timeLeft;
+  });
+  for (let i = 0; i < highScores.length; i++) {
+    var li = document.createElement("li");
+    li.textContent = highScores[i].initials + " - " + highScores[i].timeLeft;
+    highScoreTable.appendChild(li);
+  }
 }
 
 ////////////////////////////////////
@@ -281,14 +315,22 @@ buttons.forEach(function (button) {
       currentIndex++;
       showQuestion(quizQuestions, currentIndex);
     } else {
-      quiz.setAttribute("data-visibility", "hidden");
-      timer.setAttribute("data-visibility", "hidden");
-      answerMessage.setAttribute("data-visibility", "hidden");
-      console.log("Quiz is over!");
+      endGame();
     }
   });
 });
 
 buttons.forEach(function (button) {
   button.addEventListener("click", checkQuestion);
+});
+
+saveBtn.addEventListener("click", function () {
+  // Local storage does not have an expiration date
+  highScores.push({
+    initials: initials.value,
+    timeLeft: scoreBox.textContent,
+  });
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+  console.log(highScores);
+  showScores();
 });

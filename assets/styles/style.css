@@ -1,127 +1,128 @@
 /*set theme colors as variables*/
 :root {
-    --main-purple: #735D78;
-    --secondary-purple: #B392AC;
+  --main-purple: #735d78;
+  --secondary-purple: #b392ac;
 }
 
 /*set default theme font*/
 * {
-    font-family: 'Figtree', sans-serif;
+  font-family: "Figtree", sans-serif;
 }
 
 i {
-    padding-right: 1%;
+  padding-right: 1%;
 }
 
 header {
-    display: flex;
+  display: flex;
 }
 
-.high-scores, .timer{
-    display: flex;
-    width: 50%;
-    flex-wrap: wrap;
-    padding: 1%;
-    font-weight: bold;
-    font-size:20px;
-    align-items: center;
+.high-scores,
+.timer {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  padding: 1%;
+  font-weight: bold;
+  font-size: 20px;
+  align-items: center;
 }
 
 .timer {
-    justify-content: flex-end
+  justify-content: flex-end;
 }
 
 #count-down {
-    padding: 5px;
+  padding: 5px;
 }
 
 h1 {
-    margin: 1%;
-    font-size: 32px;
+  margin: 1%;
+  font-size: 32px;
 }
 
 p {
-    display: flex;
-    font-size: 20px;
+  display: flex;
+  font-size: 20px;
 }
 
 .title-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .title {
-    width: 60%;
-    justify-content: center;
+  width: 60%;
+  justify-content: center;
 }
 
 .centered {
-    padding: 20px;
-    /* border: 3px solid var(--main-purple);*/
-    text-align: center;
-    align-items: center;
-    align-content: center;
+  padding: 20px;
+  /* border: 3px solid var(--main-purple);*/
+  text-align: center;
+  align-items: center;
+  align-content: center;
 }
 
 .question-container {
-    border: 3px solid var(--main-purple);
-    margin: 5% 5% 1% 5%;
-    padding: 2%;
-    display: flex;
-    flex-wrap: wrap;
+  border: 3px solid var(--main-purple);
+  margin: 5% 5% 1% 5%;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .answer-container {
-    padding: 2%;
-    flex-wrap: wrap;
-    width: 100%;
+  padding: 2%;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .button {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    background-color: var(--main-purple);
-    color: white;
-    font-weight: bold;
-    padding: 1em;
-    margin: 1%;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-    white-space: pre;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: var(--main-purple);
+  color: white;
+  font-weight: bold;
+  padding: 1em;
+  margin: 1%;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  white-space: pre;
 }
 
 .title-button {
-    width: 25%;
+  width: 25%;
 }
 
 .button:hover {
-    background-color: var(--secondary-purple);
+  background-color: var(--secondary-purple);
 }
 
 .message-container p {
-    justify-content: center;
-    font-weight: bold;
+  justify-content: center;
+  font-weight: bold;
 }
 
 div[data-visibility="visible"] {
-    visibility: visible;
+  visibility: visible;
 }
 
-div[data-visibility="hidden"] {
-    display: none; /*doesn't include white-space when an element is hidden*/
+div[data-visibility="hidden"],
+p[data-visibility="hidden"] {
+  display: none; /*doesn't include white-space when an element is hidden*/
 }
 
 div[data-answer-status="correct"] p:first-child {
-    color: green;
+  color: green;
 }
 
 div[data-answer-status="incorrect"] p:first-child {
-    color: red;
+  color: red;
 }
-

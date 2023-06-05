@@ -1,50 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/styles/style.css" />
     <title>Coding Quiz Challenge</title>
     <!--import Google fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300&family=Montagu+Slab:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@300&family=Montagu+Slab:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <!--import font icons (Font-Awesome)-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="high-scores">View high scores</div>
-        <div class="timer" id="timer" data-visibility="hidden"><i class="fa-solid fa-stopwatch"></i> Timer: <span id="count-down"></span></div>
+      <div class="high-scores">View high scores</div>
+      <div class="timer" id="timer" data-visibility="hidden">
+        <i class="fa-solid fa-stopwatch"></i> Timer:
+        <span id="count-down"></span>
+      </div>
     </header>
     <main>
-        <div class='title-screen centered' data-visibility = "visible">
-            <h1 class="title centered">Coding Quiz Challenge</h1>
-            <p class="title centered">Try to answer as many of the following code-related questions as you can within the time limit. Keep in mind that incorrect answers will make you lose five seconds on the clock!</p>
-            <button class="button title-button centered title">Start Quiz</button>
-        </div>
-        
-        <div class = question-container data-visibility="hidden">
-            <h1 class="question" id="question">Question text goes here.</h1>
-            <div class="answer-container">
-                <button class="button quiz-button" id="a">Placeholder A</button>
-                <button class="button quiz-button" id="b">Placeholder B</button>
-                <button class="button quiz-button" id="c">Placeholder C</button>
-                <button class="button quiz-button" id="d">Placeholder D</button>
-            </div>
-        </div>
+      <div class="title-screen centered" data-visibility="visible">
+        <h1 class="title centered">Coding Quiz Challenge</h1>
+        <p class="title centered">
+          Try to answer as many of the following code-related questions as you
+          can within the time limit. Keep in mind that incorrect answers will
+          make you lose five seconds on the clock!
+        </p>
+        <button class="button title-button centered title">Start Quiz</button>
+      </div>
 
-        <div class="message-container" data-visibility="hidden" data-answer-status="neutral">
-            <p id="answer-message">Placeholder message</p>
-            <p id="score">Placeholder score</p>
+      <div class="question-container" data-visibility="hidden">
+        <h1 class="question" id="question">Question text goes here.</h1>
+        <div class="answer-container">
+          <button class="button quiz-button" id="a">Placeholder A</button>
+          <button class="button quiz-button" id="b">Placeholder B</button>
+          <button class="button quiz-button" id="c">Placeholder C</button>
+          <button class="button quiz-button" id="d">Placeholder D</button>
         </div>
-
+      </div>
+      <div id="initials-container" data-visibility="hidden">
+        <p>Your final score is: <span id="score"></span></p>
+        <input type="text" id="initials" />
+        <button id="save-btn">Save</button>
+      </div>
+      <div id="dashboard-container">
+        <ul id="highscore-table" data-visibility="hidden"></ul>
+      </div>
+      <div
+        class="message-container"
+        data-visibility="hidden"
+        data-answer-status="neutral"
+      >
+        <p id="answer-message">Placeholder message</p>
+        <!-- <p id="score">Placeholder score</p> -->
+      </div>
     </main>
     <script src="./assets/scripts/script.js"></script>
-</body>
+  </body>
 </html>
