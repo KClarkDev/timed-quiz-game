@@ -185,8 +185,10 @@ var messageBox = document.querySelector(".message-container");
 var answerMessage = document.getElementById("answer-message");
 var scoreBox = document.getElementById("score");
 var initials = document.getElementById("initials");
+var initialsBox = document.getElementById("initials-container");
 var saveBtn = document.getElementById("save-btn");
 var highScoreTable = document.getElementById("highscore-table");
+var dashBoardContainer = document.getElementById("dashboard-container");
 
 var timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
 var timeInterval;
@@ -242,6 +244,7 @@ function checkQuestion(event) {
       timeLeft = timeLeft - 15;
     } else {
       document.getElementById("count-down").textContent = " 0 seconds";
+      timeLeft = 0;
       endGame();
     }
   }
@@ -249,7 +252,6 @@ function checkQuestion(event) {
 
 function endGame() {
   quiz.setAttribute("data-visibility", "hidden");
-  //   timer.setAttribute("data-visibility", "hidden");
   answerMessage.setAttribute("data-visibility", "hidden");
   document
     .getElementById("initials-container")
@@ -263,7 +265,6 @@ function endGame() {
 function countdown() {
   var timerEl = document.getElementById("count-down");
 
-  //   var timeLeft = 10;
   timerEl.textContent = " " + timeLeft + " seconds"; // Ensures that timer displays as soon as the quiz starts
 
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -271,7 +272,7 @@ function countdown() {
     timeLeft--;
     timerEl.textContent = " " + timeLeft + " seconds";
 
-    if (timeLeft == 0) {
+    if (timeLeft <= 0) {
       endGame();
     }
   }, 1000);
@@ -334,6 +335,7 @@ saveBtn.addEventListener("click", function () {
     timeLeft: scoreBox.textContent,
   });
   localStorage.setItem("highScores", JSON.stringify(highScores));
-  console.log(highScores);
   showScores();
+  initialsBox.setAttribute("data-visibility", "hidden");
+  dashBoardContainer.setAttribute("data-visibility", "visible");
 });

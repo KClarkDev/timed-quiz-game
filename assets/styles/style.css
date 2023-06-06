@@ -44,6 +44,7 @@ h1 {
 p {
   display: flex;
   font-size: 20px;
+  justify-content: center;
 }
 
 .title-screen {
@@ -133,6 +134,62 @@ div[data-answer-status="incorrect"] p:first-child {
   padding-left: 5px;
 }
 
-#initial-entry {
-  display: inline;
+#initial-entry,
+#initials,
+#save-btn {
+  display: flex;
+  margin: 1%;
+  justify-content: center;
+}
+
+#save-btn {
+  width: auto;
+}
+
+#highscore-table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#highscore-table li {
+  display: table-row;
+}
+
+#highscore-table span {
+  display: table-cell;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+#highscore-table span:first-child {
+  font-weight: bold;
+}
+
+#highscore-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#highscore-table td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#highscore-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#highscore-table tr:hover {
+  background-color: #ddd;
+}
+
+#highscore-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
 }
