@@ -67,7 +67,7 @@ p {
   align-content: center;
 }
 
-.question-container {
+.quiz-container {
   border: 3px solid var(--main-purple);
   margin: 5% 5% 1% 5%;
   padding: 2%;
@@ -88,8 +88,8 @@ p {
   background-color: var(--main-purple);
   color: white;
   font-weight: bold;
-  padding: 1em;
-  margin: 1%;
+  padding: 2%;
+  margin: 2% 0;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
@@ -109,21 +109,24 @@ p {
   font-weight: bold;
 }
 
-div[data-visibility="visible"] {
+section[data-visibility="visible"] {
   visibility: visible;
 }
 
-div[data-visibility="hidden"],
-p[data-visibility="hidden"] {
+section[data-visibility="hidden"],
+p[data-visibility="hidden"],
+div[data-visibility="hidden"] {
   display: none; /*doesn't include white-space when an element is hidden*/
 }
 
 div[data-answer-status="correct"] p:first-child {
   color: green;
+  font-size: 36px;
 }
 
 div[data-answer-status="incorrect"] p:first-child {
   color: red;
+  font-size: 36px;
 }
 
 #score {

@@ -178,7 +178,7 @@ var quizQuestions = [
 ];
 
 var titleScreen = document.querySelector(".title-screen");
-var quiz = document.querySelector(".question-container");
+var quiz = document.querySelector(".quiz-container");
 var timer = document.querySelector(".timer");
 var buttons = document.querySelectorAll(".quiz-button");
 var messageBox = document.querySelector(".message-container");
@@ -191,13 +191,14 @@ var highScoreTable = document.getElementById("highscore-table");
 var timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
 var timeInterval;
 var currentIndex = 0; // Start with the first question of the shuffled array
-// var score = 0;
 
 var highScores = []; // Will be an array of objects with initials/high score pairs
 
+// If available, retrieve previous high scores from local storage
 if (localStorage.getItem("highScores")) {
   highScores = JSON.parse(localStorage.getItem("highScores")); //converts back to an array
 }
+
 //////////////////////////////
 //////////FUNCTIONS///////////
 //////////////////////////////
@@ -208,22 +209,6 @@ function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-function initializeQuiz() {
-  shuffleArray(quizQuestions);
-  var state = titleScreen.getAttribute("data-visibility");
-
-  if (state === "visible") {
-    titleScreen.setAttribute("data-visibility", "hidden");
-    quiz.setAttribute("data-visibility", "visible");
-    timer.setAttribute("data-visibility", "visible");
-
-    countdown(quizQuestions);
-    showQuestion(quizQuestions, currentIndex);
-  } else {
-    titleScreen.setAttribute("data-visibility", "visible");
   }
 }
 
@@ -240,23 +225,25 @@ function showQuestion(questionList, currentIndex) {
 }
 
 function checkQuestion(event) {
-  var currentQuestion = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
+  var questionToCheck = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
 
-  var correctAnswer = currentQuestion.correctAnswer;
+  var correctAnswer = questionToCheck.correctAnswer;
   var selectedAnswer = event.target.id;
 
   messageBox.setAttribute("data-visibility", "visible"); // Makes the messagebox display after answering the first question of the quiz
 
   if (selectedAnswer === correctAnswer) {
-    // score++;
     messageBox.setAttribute("data-answer-status", "correct");
     answerMessage.innerHTML = "Correct!";
-    // scoreBox.innerHTML = "Score: " + score;
   } else {
     messageBox.setAttribute("data-answer-status", "incorrect");
     answerMessage.innerHTML = "Wrong!";
-    timeLeft = timeLeft - 15;
-    // scoreBox.innerHTML = "Score: " + score;
+    if (timeLeft >= 15) {
+      timeLeft = timeLeft - 15;
+    } else {
+      document.getElementById("count-down").textContent = " 0 seconds";
+      endGame();
+    }
   }
 }
 
@@ -300,6 +287,22 @@ function showScores() {
     var li = document.createElement("li");
     li.textContent = highScores[i].initials + " - " + highScores[i].timeLeft;
     highScoreTable.appendChild(li);
+  }
+}
+
+function initializeQuiz() {
+  shuffleArray(quizQuestions);
+  var state = titleScreen.getAttribute("data-visibility");
+
+  if (state === "visible") {
+    titleScreen.setAttribute("data-visibility", "hidden");
+    quiz.setAttribute("data-visibility", "visible");
+    timer.setAttribute("data-visibility", "visible");
+
+    countdown(quizQuestions);
+    showQuestion(quizQuestions, currentIndex);
+  } else {
+    titleScreen.setAttribute("data-visibility", "visible");
   }
 }
 
