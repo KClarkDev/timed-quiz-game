@@ -94,7 +94,6 @@ p {
   font-size: 16px;
   cursor: pointer;
   width: 100%;
-  white-space: pre;
 }
 
 .title-button {
@@ -125,4 +124,12 @@ div[data-answer-status="correct"] p:first-child {
 
 div[data-answer-status="incorrect"] p:first-child {
   color: red;
+}
+
+#score {
+  padding-left: 5px;
+}
+
+#initial-entry {
+  display: inline;
 }

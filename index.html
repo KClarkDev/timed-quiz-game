@@ -43,7 +43,7 @@
         <p class="title centered">
           Try to answer as many of the following code-related questions as you
           can within the time limit. Keep in mind that incorrect answers will
-          make you lose five seconds on the clock!
+          make you lose fifteen seconds on the clock!
         </p>
         <button class="button title-button centered title">Start Quiz</button>
       </div>
@@ -59,8 +59,10 @@
       </div>
       <div id="initials-container" data-visibility="hidden">
         <p>Your final score is: <span id="score"></span></p>
-        <input type="text" id="initials" />
-        <button id="save-btn">Save</button>
+        <div id="initial-entry">
+          <p>Enter your initials:</p>
+            <input type="text" id="initials" />
+            <button class="button" id="save-btn">Save</button>
       </div>
       <div id="dashboard-container">
         <ul id="highscore-table" data-visibility="hidden"></ul>
