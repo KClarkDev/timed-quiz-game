@@ -189,6 +189,9 @@ var initialsBox = document.getElementById("initials-container");
 var saveBtn = document.getElementById("save-btn");
 var highScoreTable = document.getElementById("highscore-table");
 var dashBoardContainer = document.getElementById("dashboard-container");
+var highScoresLabel = document.getElementById("highScore-label");
+var playAgain = document.getElementById("play-again");
+var playAgainBtn = document.getElementById("play-again-btn");
 
 var timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
 var timeInterval;
@@ -338,4 +341,9 @@ saveBtn.addEventListener("click", function () {
   showScores();
   initialsBox.setAttribute("data-visibility", "hidden");
   dashBoardContainer.setAttribute("data-visibility", "visible");
+  highScoresLabel.setAttribute("data-visibility", "visible");
+  playAgain.setAttribute("data-visibility", "visible");
+  playAgainBtn.setAttribute("data-visibility", "visible");
 });
+
+playAgain.querySelector("button").addEventListener("click", initializeQuiz);

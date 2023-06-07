@@ -110,13 +110,11 @@ p {
   font-weight: bold;
 }
 
-section[data-visibility="visible"] {
+[data-visibility="visible"] {
   visibility: visible;
 }
 
-section[data-visibility="hidden"],
-p[data-visibility="hidden"],
-div[data-visibility="hidden"] {
+[data-visibility="hidden"] {
   display: none; /*doesn't include white-space when an element is hidden*/
 }
 
@@ -140,56 +138,51 @@ div[data-answer-status="incorrect"] p:first-child {
   display: flex;
   margin: 1%;
   justify-content: center;
+  line-height: 10%;
 }
 
 #save-btn {
   width: auto;
 }
 
-#highscore-table {
-  display: table;
-  border-collapse: collapse;
-  width: 100%;
+input {
+  padding: 0 0 0 1%; /*add padding to left side only*/
 }
 
-#highscore-table li {
-  display: table-row;
-}
-
-#highscore-table span {
-  display: table-cell;
-  padding: 5px;
-  border: 1px solid black;
-}
-
-#highscore-table span:first-child {
-  font-weight: bold;
+/*Style the high scores table*/
+#dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 20px;
 }
 
 #highscore-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: auto; /*change bullets to numbers*/
+  min-width: 100px;
+  padding: 0;
+  margin: 0;
 }
 
-#highscore-table td,
-#customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+li {
+  text-align: center;
 }
 
-#highscore-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+li:nth-child(even) {
+  background-color: #eeeeee;
 }
 
-#highscore-table tr:hover {
-  background-color: #ddd;
+li:nth-child(odd) {
+  background-color: #a1a1a1;
 }
 
-#highscore-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04aa6d;
-  color: white;
+#play-again {
+  display: flex;
+  justify-content: center;
+}
+
+#play-again-btn {
+  width: auto;
 }
