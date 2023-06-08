@@ -195,7 +195,7 @@ var playAgain = document.getElementById("play-again");
 var playAgainBtn = document.getElementById("play-again-btn");
 
 var state;
-var timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
+var timeLeft;
 var timeInterval;
 var currentIndex = 0; // Start with the first question of the shuffled array
 
@@ -232,7 +232,15 @@ function showQuestion(questionList, currentIndex) {
 }
 
 function checkQuestion(event) {
-  var questionToCheck = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
+  console.log("checkQuestion activated");
+
+  var questionToCheck;
+
+  if (currentIndex === 0) {
+    questionToCheck = quizQuestions[currentIndex];
+  } else {
+    questionToCheck = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
+  }
 
   var correctAnswer = questionToCheck.correctAnswer;
   var selectedAnswer = event.target.id;
@@ -300,6 +308,7 @@ function showScores() {
 }
 
 function initializeQuiz() {
+  timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
   console.log("initializeQuiz activated");
   shuffleArray(quizQuestions);
   console.log("Questions have been shuffled");
@@ -319,6 +328,7 @@ function initializeQuiz() {
     titleScreen.setAttribute("data-visibility", "visible");
     dashBoardContainer.setAttribute("data-visibility", "hidden");
     playAgainBtn.setAttribute("data-visibility", "hidden");
+    timer.setAttribute("data-visibility", "hidden");
   }
 }
 
@@ -329,7 +339,14 @@ function initializeQuiz() {
 titleScreen.querySelector("button").addEventListener("click", initializeQuiz);
 
 buttons.forEach(function (button) {
+  button.addEventListener("click", checkQuestion);
+});
+
+buttons.forEach(function (button) {
   button.addEventListener("click", function () {
+    console.log(
+      "button EvenListener activated to advance to the next question"
+    );
     if (currentIndex < quizQuestions.length - 1) {
       currentIndex++;
       showQuestion(quizQuestions, currentIndex);
@@ -337,10 +354,6 @@ buttons.forEach(function (button) {
       endGame();
     }
   });
-});
-
-buttons.forEach(function (button) {
-  button.addEventListener("click", checkQuestion);
 });
 
 saveBtn.addEventListener("click", function () {
