@@ -193,6 +193,7 @@ var dashBoardContainer = document.getElementById("dashboard-container");
 var highScoresLabel = document.getElementById("highScore-label");
 var playAgain = document.getElementById("play-again");
 var playAgainBtn = document.getElementById("play-again-btn");
+var timerEl = document.getElementById("count-down");
 
 var state;
 var timeLeft;
@@ -237,22 +238,28 @@ function checkQuestion(event) {
   var questionToCheck;
 
   if (currentIndex === 0) {
+    console.log("Current index is: " + currentIndex);
     questionToCheck = quizQuestions[currentIndex];
   } else {
+    console.log("Current index is: " + currentIndex);
     questionToCheck = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
   }
 
   var correctAnswer = questionToCheck.correctAnswer;
+  console.log("The correct answer is: " + correctAnswer);
   var selectedAnswer = event.target.id;
+  console.log("The selected answer is: " + selectedAnswer);
 
   messageBox.setAttribute("data-visibility", "visible"); // Makes the messagebox display after answering the first question of the quiz
 
   if (selectedAnswer === correctAnswer) {
     messageBox.setAttribute("data-answer-status", "correct");
     answerMessage.innerHTML = "Correct!";
+    console.log("correct!");
   } else {
     messageBox.setAttribute("data-answer-status", "incorrect");
     answerMessage.innerHTML = "Wrong!";
+    console.log("wrong!");
     if (timeLeft >= 15) {
       timeLeft = timeLeft - 15;
       console.log("Minus 15 seconds!");
@@ -273,14 +280,13 @@ function endGame() {
     .getElementById("initials-container")
     .setAttribute("data-visibility", "visible");
   clearInterval(timeInterval);
+  timerEl.textContent = timeLeft;
   scoreBox.textContent = timeLeft;
 }
 
-// Sets the behavior for the timer. Allots 5 seconds per question. Lose 5 seconds each time a question is answered incorrectly
+// Sets the behavior for the timer. Allots 15 seconds per question. Lose 15 seconds each time a question is answered incorrectly
 
 function countdown() {
-  var timerEl = document.getElementById("count-down");
-
   timerEl.textContent = " " + timeLeft + " seconds"; // Ensures that timer displays as soon as the quiz starts
 
   // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
