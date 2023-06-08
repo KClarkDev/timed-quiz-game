@@ -31,12 +31,13 @@
 
   <body>
     <header>
-      <div class="high-scores">View high scores</div>
+      <div class="high-scores-link">View high scores</div>
       <div class="timer" id="timer" data-visibility="hidden">
         <i class="fa-solid fa-stopwatch"></i> Timer:
         <span id="count-down"></span>
       </div>
     </header>
+
     <main>
       <!--Quiz title screen starts out as visible, other sections hidden-->
       <section class="title-screen centered" data-visibility="visible">
@@ -70,14 +71,12 @@
       </section>
 
       <div id="dashboard-container" data-visibility="hidden">
-        <p id="highScore-label" data-visibility="hidden">High Scores</p>
-        <ul id="highscore-table" data-visibility="hidden"></ul>
+        <p id="highScore-label">High Scores</p>
+        <ul id="highscore-table"></ul>
       </div>
 
       <div id="play-again" data-visibility="hidden">
-        <button id="play-again-btn" class="button" data-visibility="hidden">
-          Play Again
-        </button>
+        <button id="play-again-btn" class="button">Play Again</button>
       </div>
 
       <div

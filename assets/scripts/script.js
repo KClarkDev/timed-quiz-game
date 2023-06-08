@@ -177,6 +177,7 @@ var quizQuestions = [
   },
 ];
 
+//HTML elements
 var titleScreen = document.querySelector(".title-screen");
 var quiz = document.querySelector(".quiz-container");
 var timer = document.querySelector(".timer");
@@ -193,6 +194,7 @@ var highScoresLabel = document.getElementById("highScore-label");
 var playAgain = document.getElementById("play-again");
 var playAgainBtn = document.getElementById("play-again-btn");
 
+var state;
 var timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
 var timeInterval;
 var currentIndex = 0; // Start with the first question of the shuffled array
@@ -245,8 +247,10 @@ function checkQuestion(event) {
     answerMessage.innerHTML = "Wrong!";
     if (timeLeft >= 15) {
       timeLeft = timeLeft - 15;
+      console.log("Minus 15 seconds!");
     } else {
       document.getElementById("count-down").textContent = " 0 seconds";
+      console.log("Game over!");
       timeLeft = 0;
       endGame();
     }
@@ -254,6 +258,7 @@ function checkQuestion(event) {
 }
 
 function endGame() {
+  console.log("endGame function activated");
   quiz.setAttribute("data-visibility", "hidden");
   answerMessage.setAttribute("data-visibility", "hidden");
   document
@@ -295,18 +300,25 @@ function showScores() {
 }
 
 function initializeQuiz() {
+  console.log("initializeQuiz activated");
   shuffleArray(quizQuestions);
-  var state = titleScreen.getAttribute("data-visibility");
+  console.log("Questions have been shuffled");
+  state = titleScreen.getAttribute("data-visibility");
+  console.log("Title Screen state when button was clicked: " + state);
 
+  // If start screen is already visible, hide the start screen and make the quiz and timer visible when "Start Quiz" is clicked. Call the functions to start the countdown and show the first question
   if (state === "visible") {
     titleScreen.setAttribute("data-visibility", "hidden");
     quiz.setAttribute("data-visibility", "visible");
     timer.setAttribute("data-visibility", "visible");
-
+    dashBoardContainer.setAttribute("data-visibility", "hidden");
+    playAgainBtn.setAttribute("data-visibility", "hidden");
     countdown(quizQuestions);
     showQuestion(quizQuestions, currentIndex);
   } else {
     titleScreen.setAttribute("data-visibility", "visible");
+    dashBoardContainer.setAttribute("data-visibility", "hidden");
+    playAgainBtn.setAttribute("data-visibility", "hidden");
   }
 }
 
@@ -332,6 +344,7 @@ buttons.forEach(function (button) {
 });
 
 saveBtn.addEventListener("click", function () {
+  console.log("saveBtn clicked, setting scores to localStorage");
   // STUDY NOTE: Local storage does not have an expiration date
   highScores.push({
     initials: initials.value,

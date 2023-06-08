@@ -17,7 +17,7 @@ header {
   display: flex;
 }
 
-.high-scores,
+.high-scores-link,
 .timer {
   display: flex;
   width: 50%;
@@ -114,8 +114,10 @@ p {
   visibility: visible;
 }
 
-[data-visibility="hidden"] {
-  display: none; /*doesn't include white-space when an element is hidden*/
+[data-visibility="hidden"],
+#dashboard-container[data-visibility="hidden"],
+#play-again[data-visibility="hidden"] {
+  display: none;
 }
 
 div[data-answer-status="correct"] p:first-child {
