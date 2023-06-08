@@ -194,6 +194,7 @@ var highScoresLabel = document.getElementById("highScore-label");
 var playAgain = document.getElementById("play-again");
 var playAgainBtn = document.getElementById("play-again-btn");
 var timerEl = document.getElementById("count-down");
+var highScoresLink = document.getElementById("high-scores-link");
 
 var state;
 var timeLeft;
@@ -327,13 +328,13 @@ function initializeQuiz() {
     quiz.setAttribute("data-visibility", "visible");
     timer.setAttribute("data-visibility", "visible");
     dashBoardContainer.setAttribute("data-visibility", "hidden");
-    playAgainBtn.setAttribute("data-visibility", "hidden");
+    playAgain.setAttribute("data-visibility", "hidden");
     countdown(quizQuestions);
     showQuestion(quizQuestions, currentIndex);
   } else {
     titleScreen.setAttribute("data-visibility", "visible");
     dashBoardContainer.setAttribute("data-visibility", "hidden");
-    playAgainBtn.setAttribute("data-visibility", "hidden");
+    playAgain.setAttribute("data-visibility", "hidden");
     timer.setAttribute("data-visibility", "hidden");
   }
 }
@@ -375,7 +376,15 @@ saveBtn.addEventListener("click", function () {
   dashBoardContainer.setAttribute("data-visibility", "visible");
   highScoresLabel.setAttribute("data-visibility", "visible");
   playAgain.setAttribute("data-visibility", "visible");
-  playAgainBtn.setAttribute("data-visibility", "visible");
+  // playAgainBtn.setAttribute("data-visibility", "visible");
 });
 
 playAgain.querySelector("button").addEventListener("click", initializeQuiz);
+
+highScoresLink.addEventListener("click", function (event) {
+  event.preventDefault();
+  showScores();
+  titleScreen.setAttribute("data-visibility", "hidden");
+  dashBoardContainer.setAttribute("data-visibility", "visible");
+  playAgain.setAttribute("data-visibility", "visible");
+});
