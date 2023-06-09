@@ -196,6 +196,7 @@ var playAgainBtn = document.getElementById("play-again-btn");
 var timerEl = document.getElementById("count-down");
 var highScoresLink = document.getElementById("high-scores-link");
 
+var currentQuestion;
 var state;
 var timeLeft;
 var timeInterval;
@@ -223,7 +224,8 @@ function shuffleArray(array) {
 
 // Display a question from the shuffled array, starting with the first index. When an answer (button) is clicked, proceed to the next question in the array.
 function showQuestion(questionList, currentIndex) {
-  var currentQuestion = questionList[currentIndex];
+  currentQuestion = questionList[currentIndex];
+  console.log("The current question is: " + currentQuestion.question);
 
   // Populate the appropriate HTML elements with the current question and answer text
   document.getElementById("question").innerHTML = currentQuestion.question;
@@ -236,14 +238,22 @@ function showQuestion(questionList, currentIndex) {
 function checkQuestion(event) {
   console.log("checkQuestion activated");
 
-  var questionToCheck;
+  var questionToCheck = "";
 
   if (currentIndex === 0) {
-    console.log("Current index is: " + currentIndex);
+    console.log("The index of the previous question is: " + currentIndex);
     questionToCheck = quizQuestions[currentIndex];
+    console.log(
+      "The question we are checking the answer to is: " +
+        questionToCheck.question
+    );
   } else {
-    console.log("Current index is: " + currentIndex);
+    console.log("The index of the previous question is: " + currentIndex);
     questionToCheck = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
+    console.log(
+      "The question we are checking the answer to is: " +
+        questionToCheck.question
+    );
   }
 
   var correctAnswer = questionToCheck.correctAnswer;
@@ -257,10 +267,12 @@ function checkQuestion(event) {
     messageBox.setAttribute("data-answer-status", "correct");
     answerMessage.innerHTML = "Correct!";
     console.log("correct!");
+    console.log("----------------");
   } else {
     messageBox.setAttribute("data-answer-status", "incorrect");
     answerMessage.innerHTML = "Wrong!";
     console.log("wrong!");
+    console.log("----------------");
     if (timeLeft >= 15) {
       timeLeft = timeLeft - 15;
       console.log("Minus 15 seconds!");
@@ -316,11 +328,8 @@ function showScores() {
 
 function initializeQuiz() {
   timeLeft = quizQuestions.length * 15; // Allows for 15 seconds per question
-  console.log("initializeQuiz activated");
   shuffleArray(quizQuestions);
-  console.log("Questions have been shuffled");
   state = titleScreen.getAttribute("data-visibility");
-  console.log("Title Screen state when button was clicked: " + state);
 
   // If start screen is already visible, hide the start screen and make the quiz and timer visible when "Start Quiz" is clicked. Call the functions to start the countdown and show the first question
   if (state === "visible") {
@@ -356,6 +365,7 @@ buttons.forEach(function (button) {
     );
     if (currentIndex < quizQuestions.length - 1) {
       currentIndex++;
+      console.log("Added +1 to the currentIndex variable");
       showQuestion(quizQuestions, currentIndex);
     } else {
       endGame();
@@ -364,7 +374,6 @@ buttons.forEach(function (button) {
 });
 
 saveBtn.addEventListener("click", function () {
-  console.log("saveBtn clicked, setting scores to localStorage");
   // STUDY NOTE: Local storage does not have an expiration date
   highScores.push({
     initials: initials.value,
