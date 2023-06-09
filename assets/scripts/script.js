@@ -249,7 +249,7 @@ function checkQuestion(event) {
     );
   } else {
     console.log("The index of the previous question is: " + currentIndex);
-    questionToCheck = quizQuestions[currentIndex - 1]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
+    questionToCheck = quizQuestions[currentIndex]; // Since this function is called when the button is clicked, but the question display also changes when the button is clicked, we need to compare the clicked answer to the previously displayed question.
     console.log(
       "The question we are checking the answer to is: " +
         questionToCheck.question
