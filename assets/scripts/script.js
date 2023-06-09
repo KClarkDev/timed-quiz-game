@@ -51,7 +51,7 @@ var quizQuestions = [
   },
   {
     questionNum: 5,
-    question: "How do we declare a conditional statement in Javsacript?",
+    question: "How do we declare a conditional statement in Javacript?",
     answers: {
       a: "if...else",
       b: "difference...between",
