@@ -1,4 +1,4 @@
-# Personal Project Portfolio
+# Timed Quiz Game
 
 ## Description
 
